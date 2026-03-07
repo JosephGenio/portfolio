@@ -1,0 +1,144 @@
+PORTFOLIO WEBSITE CODE LOGIC PLAN
+
+Core Rule All static information must be stored in JSON files and loaded
+dynamically by the website. The frontend should parse the JSON and
+render the content using reusable React components.
+
+  ----------------------
+  1. DATA ARCHITECTURE
+  ----------------------
+
+All static data will live inside:
+
+/src/data/
+
+Files:
+
+site.json skills.json projects.json experience.json contact.json
+
+This ensures the UI is fully driven by data.
+
+Advantages: • Easy updates without touching UI code • Cleaner component
+logic • Easier CMS integration later • AI/automation friendly
+
+  --------------------------------------------------
+  2. JSON STRUCTURE
+
+  site.json
+
+  { “name”: “Joseph Genio”, “title”: “Full Stack
+  Software Developer”, “tagline”: “Building scalable
+  web applications with React, NodeJS, and ASP.NET
+  Core”, “resume”: “/assets/resume.pdf” }
+  --------------------------------------------------
+
+skills.json
+
+{ “frontend”: [ “React”, “Typescript”, “HTML”, “CSS” ], “backend”: [
+“NodeJS”, “ASP.NET Core” ], “database”: [ “MSSQL”, “MySQL”, “PostgreSQL”
+], “testing”: [ “Cypress”, “Jest” ], “devops”: [ “Docker”, “Jenkins”,
+“Github Actions”, “Kibana” ] }
+
+------------------------------------------------------------------------
+
+projects.json
+
+[ { “title”: “Inventory Management System”, “description”: “Inventory
+and event management platform”, “stack”: [“React”, “NodeJS”, “MSSQL”],
+“github”: ““,”demo”: ““,”image”: “/assets/projects/inventory.png” }, {
+“title”: “Banking Web Application”, “description”: “Customer information
+and accounting system”, “stack”: [“ASP.NET Core”, “MSSQL”, “Bootstrap”],
+“github”: ““,”demo”: ““,”image”: “/assets/projects/banking.png” }]
+
+------------------------------------------------------------------------
+
+experience.json
+
+[ { “title”: “Software Developer”, “company”: ““,”type”: “Full Time”,
+“description”: [ “Developed enterprise React and NodeJS applications”,
+“Implemented Cypress and Jest testing”, “Handled production deployments”
+] }, { “title”: “Software Developer”, “company”: ““,”type”: “Part Time”,
+“description”: [ “Built DAML trading web application”, “Developed
+WordPress and Magento systems” ] }]
+
+------------------------------------------------------------------------
+
+contact.json
+
+{ “email”: ““,”github”: ““,”linkedin”: “” }
+
+  --------------------------------------------------
+  3. DATA LOADING STRATEGY
+
+  Option 1 (Recommended) Import JSON directly.
+
+  Example:
+
+  import siteData from “../data/site.json” import
+  skills from “../data/skills.json”
+
+  Advantages: • fastest • bundled by Vite • no API
+  required
+  --------------------------------------------------
+
+Option 2 Fetch JSON dynamically.
+
+Example:
+
+useEffect(() => { fetch(“/data/projects.json”) .then(res => res.json())
+.then(setProjects) }, [])
+
+Useful if later hosted as CMS.
+
+  --------------------------------------------------
+  4. COMPONENT DATA FLOW
+  --------------------------------------------------
+  5. COMPONENT RENDERING LOGIC
+
+  Example Skills Component
+
+  skills.json is parsed and rendered dynamically.
+
+  Pseudo logic:
+
+  for each category in skills render category title
+  for each skill render skill badge
+
+  Example JSX
+
+  {Object.entries(skills).map(([category, items]) =>
+  (
+  --------------------------------------------------
+
+6.  PROJECT CARD RENDERING
+
+projects.json drives UI.
+
+Pseudo flow:
+
+load projects loop through projects render ProjectCard
+
+Example:
+
+{projects.map(project => ( ))}
+
+  --------------------------------------------------
+  7. EXPERIENCE TIMELINE LOGIC
+  --------------------------------------------------
+  8. PERFORMANCE STRATEGY
+
+  Best practices
+
+  • Lazy load images • Split components • Use React
+  memo where possible • Keep JSON lightweight
+  --------------------------------------------------
+
+9.  FUTURE EXPANSION
+
+Because everything is JSON driven, the portfolio can later connect to:
+
+Headless CMS Notion API GitHub API Blog engines
+
+------------------------------------------------------------------------
+
+END OF CODE LOGIC PLAN

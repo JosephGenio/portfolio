@@ -1,0 +1,217 @@
+PORTFOLIO WEBSITE SETUP PLAN Layout Reference:
+https://figma-portfolio-ten.vercel.app
+
+Goal: Create a developer portfolio with the SAME structural layout as
+the reference site, but with different animations, color scheme, and
+personal content.
+
+  ---------------------------
+  1. PROJECT INITIALIZATION
+  ---------------------------
+
+Recommended Stack Frontend: - React - Vite - TailwindCSS - Framer Motion
+(for animations)
+
+Optional: - React Icons - GSAP (advanced animations) - React Scroll
+
+Steps 1. Create project npm create vite@latest portfolio cd portfolio
+npm install
+
+2.  Install dependencies npm install tailwindcss framer-motion
+    react-icons
+
+3.  Initialize tailwind npx tailwindcss init -p
+
+4.  Setup folder structure
+
+/src /components Navbar.jsx Hero.jsx About.jsx Skills.jsx Projects.jsx
+Experience.jsx Contact.jsx Footer.jsx /animations /assets /styles
+App.jsx main.jsx
+
+  -------------------------------------------------
+  2. WEBSITE STRUCTURE (Same Layout as Reference)
+  -------------------------------------------------
+
+Sections
+
+1.  Navbar
+2.  Hero
+3.  About
+4.  Skills
+5.  Projects
+6.  Experience
+7.  Contact
+8.  Footer
+
+Navigation links scroll to sections.
+
+  -----------------
+  3. HERO SECTION
+  -----------------
+
+Content - Name - Title (Full Stack Developer) - Short intro - Buttons
+View Projects Download Resume Contact Me
+
+Layout Left: text Right: illustration / image
+
+Animations - Replace reference animation with: fade-in slide-up typing
+text effect
+
+Possible Libraries - Framer Motion - react-type-animation
+
+  ------------------
+  4. ABOUT SECTION
+  ------------------
+
+Content Short paragraph describing:
+
+• Full stack development • React + NodeJS experience • ASP.NET backend
+work • Automation testing experience
+
+Layout Image on left Text on right
+
+Animation scroll reveal
+
+  -------------------
+  5. SKILLS SECTION
+  -------------------
+
+Display skills as grid cards.
+
+Categories
+
+Frontend - React - Typescript - HTML - CSS
+
+Backend - NodeJS - ASP.NET Core
+
+Database - MSSQL - MySQL - PostgreSQL
+
+Testing - Cypress - Jest
+
+DevOps - Docker - Jenkins - Github Actions - Kibana
+
+Animations hover effects card lift animation
+
+  ---------------------
+  6. PROJECTS SECTION
+  ---------------------
+
+Showcase 3–4 major projects.
+
+Project Card Structure
+
+Project Image Project Title Tech Stack Short Description Buttons Github
+Live Demo
+
+Example Projects
+
+Inventory Management System Tech: React, NodeJS, MSSQL
+
+Banking Web Application Tech: ASP.NET Core, MSSQL
+
+Trading Web Application Tech: React, DAML
+
+Car Rental Booking System Tech: Magento, WordPress
+
+Animations card hover scale animation fade-in on scroll
+
+  -----------------------
+  7. EXPERIENCE SECTION
+  -----------------------
+
+Use vertical timeline.
+
+Entries
+
+Software Developer Current company
+
+Software Developer (Part Time)
+
+Software Developer and Technical Support
+
+Intern
+
+Animation timeline scroll reveal
+
+  --------------------
+  8. CONTACT SECTION
+  --------------------
+
+Include
+
+Email LinkedIn Github Contact form
+
+Form Fields
+
+Name Email Message
+
+Optional Backend
+
+EmailJS or simple NodeJS endpoint
+
+  -----------
+  9. FOOTER
+  -----------
+
+Include
+
+copyright social icons github link
+
+  ---------------------------------------------
+  10. COLOR SCHEME (Different from Reference)
+  ---------------------------------------------
+
+Example Theme
+
+Background #0f172a
+
+Primary #6366f1
+
+Secondary #22c55e
+
+Accent #f59e0b
+
+Text #e5e7eb
+
+  -----------------------------------------------
+  11. ANIMATION PLAN (Different from Reference)
+  -----------------------------------------------
+
+Use these animations instead of the original site:
+
+Hero text typing animation
+
+Sections fade-up reveal
+
+Cards hover scale effect
+
+Navbar background blur on scroll
+
+Optional advanced animations cursor glow floating particles background
+
+  ----------------
+  12. DEPLOYMENT
+  ----------------
+
+Best hosting options
+
+Vercel Netlify Cloudflare Pages
+
+Steps
+
+1.  Push project to Github
+2.  Connect repository to hosting platform
+3.  Enable automatic deployment
+
+  ---------------------------
+  13. OPTIONAL ENHANCEMENTS
+  ---------------------------
+
+Add:
+
+Dark / Light mode toggle Blog section Github contribution graph Project
+filtering Performance optimization
+
+------------------------------------------------------------------------
+
+END OF PLAN

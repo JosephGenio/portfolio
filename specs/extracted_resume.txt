@@ -1,0 +1,38 @@
+EXTRACTED RESUME DATA
+
+PERSONAL INFORMATION Name: Address: Contact Number: Email:
+
+SKILLS - React - NodeJS - Typescript - ASP.NET Core - SQL (MSSQL, MySQL,
+PostgreSQL) - Cypress Test - Jest Test - DAML - WordPress - Jenkins -
+GIT - GitHub Actions - REST API - Kibana - Docker
+
+WORK EXPERIENCE
+
+Software Developer and Company: Duration:
+
+Responsibilities: - Developed and maintained web applications using
+Node.js, React, Typescript and MS SQL Server for Inventory Management,
+Events Management and Employee Management. - Implemented automated
+testing with Cypress and Jest for quality assurance. - Managed
+deployments and provided ongoing client support for new features and
+updates.
+
+Software Developer Company: Employment Type: Part Time
+
+Responsibilities: - Developed trading web applications using DAML and
+React, including APIs for smart contract integration. - Built car rental
+booking applications using Magento 2 and developed WordPress-based
+websites.
+
+Software Developer and Technical Support Company: Duration:
+
+Responsibilities: - Developed a banking web application (Customer
+Information System, Accounting, Deposits, User Management) using C#
+ASP.NET Core, HTML, CSS, Bootstrap, and Vanilla JavaScript. - Developed
+and maintained a laundry service web application using C# ASP.NET Core,
+HTML, CSS, Bootstrap, and Vanilla JavaScript.
+
+On the Job Trainee Company: Type: Intern
+
+Responsibilities: - Developed Web Interface for School Alarm Scheduler
+System using HTML, CSS, and Vanilla JavaScript.
