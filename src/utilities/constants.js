@@ -1,0 +1,1 @@
+export const EMAIL_SEND_RATE_LIMIT = 60_000

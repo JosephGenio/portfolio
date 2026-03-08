@@ -7,19 +7,18 @@ import contact from "../data/contact.json";
 import { fadeLeftVariant, fadeRightVariant } from "../animations/variants";
 import { isValidEmail } from "../utilities/helpers";
 import ErrorMessage from "./ErrorMessage";
+import { EMAIL_SEND_RATE_LIMIT } from "../utilities/constants";
 
 
   const {
     VITE_EMAILJS_SERVICE_ID,
     VITE_EMAILJS_TEMPLATE_ID, 
-    VITE_EMAILJS_PUBLIC_KEY,
-    EMAIL_SEND_RATE_LIMIT } = import.meta.env;
+    VITE_EMAILJS_PUBLIC_KEY} = import.meta.env;
 
 const EMAILJS_SERVICE_ID = VITE_EMAILJS_SERVICE_ID;
 const EMAILJS_TEMPLATE_ID = VITE_EMAILJS_TEMPLATE_ID;
 const EMAILJS_PUBLIC_KEY = VITE_EMAILJS_PUBLIC_KEY;
 
-const RATE_LIMIT_MS = EMAIL_SEND_RATE_LIMIT
 
 function Contact() {
   const formRef = useRef();
@@ -57,8 +56,8 @@ function Contact() {
 
     // Rate limiter — prevent rapid-fire submissions
     const now = Date.now();
-    if (now - lastSentAt < RATE_LIMIT_MS) {
-      const secondsLeft = Math.ceil((RATE_LIMIT_MS - (now - lastSentAt)) / 1000);
+    if (now - lastSentAt < EMAIL_SEND_RATE_LIMIT) {
+      const secondsLeft = Math.ceil((EMAIL_SEND_RATE_LIMIT - (now - lastSentAt)) / 1000);
       setStatus("rate_limited");
       setTimeout(() => {
         if (status === "rate_limited") setStatus("idle");
