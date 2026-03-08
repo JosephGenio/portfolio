@@ -8,9 +8,12 @@ function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center scroll-mt-20 px-6"
+      className="relative min-h-screen flex items-center scroll-mt-20 px-6 overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      {/* Radial glow behind hero */}
+      <div className="hero-glow" />
+
+      <div className="relative z-10 max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Left column */}
         <motion.div
           variants={staggerContainer}

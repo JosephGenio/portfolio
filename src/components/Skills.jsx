@@ -13,7 +13,7 @@ const categoryConfig = {
 
 function Skills() {
   return (
-    <section id="skills" className="py-20 px-6 scroll-mt-20">
+    <section id="skills" className="py-20 px-6 scroll-mt-20 section-glow">
       <div className="max-w-6xl mx-auto">
         <motion.h2
           className="text-3xl font-bold text-center mb-12"
@@ -42,7 +42,7 @@ function Skills() {
                 variants={fadeUpVariant}
                 initial="rest"
                 whileHover="hover"
-                className="bg-bg-light rounded-xl p-6 border border-primary/10 hover:border-primary/30 transition-colors"
+                className="card-gradient card-glow rounded-xl p-6 border border-primary/10 hover:border-primary/30 transition-all"
               >
                 <motion.div variants={cardHover}>
                   <div className="flex items-center gap-3 mb-4">

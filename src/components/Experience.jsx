@@ -34,7 +34,7 @@ function Experience() {
               {/* Timeline dot */}
               <div className="absolute -left-[2.55rem] top-1 w-4 h-4 rounded-full bg-primary border-4 border-bg" />
 
-              <div className="bg-bg-light rounded-xl p-6 border border-primary/10">
+              <div className="card-gradient card-glow rounded-xl p-6 border border-primary/10 transition-all">
                 <div className="flex flex-wrap items-center gap-3 mb-3">
                   <h3 className="text-lg font-semibold">{entry.title}</h3>
                   <span

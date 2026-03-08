@@ -19,6 +19,15 @@
 
   --color-border: #2a2a2a;
   --color-card: #171717;
+
+  /* Card gradient stops (slate → primary-tinted → slate) */
+  --color-card-from: #0a0a14;
+  --color-card-via: #1a1a3e;
+  --color-card-to: #0a0a14;
+
+  /* Glow / radial accent */
+  --color-glow: #6366f120;
+  --color-glow-strong: #6366f140;
 }
 
 html {
@@ -28,4 +37,58 @@ html {
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
+}
+
+/* Hero radial glow — mimics reference site's ambient light effect */
+.hero-glow {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  translate: -50% 0;
+  width: 80%;
+  height: 80%;
+  background: radial-gradient(
+    ellipse at center,
+    var(--color-glow-strong) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Card gradient background — matches reference's from-slate via-purple to-slate pattern */
+.card-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--color-card-from),
+    var(--color-card-via),
+    var(--color-card-to)
+  );
+}
+
+/* Card hover glow shadow — matches reference's hover:shadow-purple effect */
+.card-glow:hover {
+  box-shadow: 0 0 30px var(--color-glow), 0 0 60px var(--color-glow);
+}
+
+/* Section radial accent — subtle glow behind section headings */
+.section-glow {
+  position: relative;
+}
+
+.section-glow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  translate: -50% 0;
+  width: 40%;
+  height: 200px;
+  background: radial-gradient(
+    ellipse at center,
+    var(--color-glow) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
 }
