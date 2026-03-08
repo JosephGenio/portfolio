@@ -201,7 +201,7 @@ function Contact() {
                 <button
                   type="submit"
                   disabled={status === "sending"}
-                  className="px-6 py-3 bg-primary hover:bg-primary-hover rounded-lg font-medium transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="px-6 py-3 bg-primary hover:bg-primary-hover hover:shadow-[0_0_20px_rgba(79,110,247,0.4)] rounded-lg font-medium transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed active:scale-95"
                 >
                   {status === "sending" ? "Sending..." : "Send Message"}
                 </button>

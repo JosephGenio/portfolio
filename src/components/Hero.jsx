@@ -4,6 +4,7 @@ import { TypeAnimation } from "react-type-animation";
 import { FaArrowDown, FaFileDownload, FaEnvelope, FaSpinner } from "react-icons/fa";
 import siteData from "../data/site.json";
 import { fadeUpVariant, staggerContainer, fadeRightVariant } from "../animations/variants";
+import MagneticButton from "./MagneticButton";
 
 const particles = Array.from({ length: 12 }, (_, i) => ({
   id: i,
@@ -114,34 +115,40 @@ function Hero() {
           </motion.p>
 
           <motion.div variants={fadeUpVariant} className="flex flex-wrap gap-4 mt-2">
-            <a
-              href="#projects"
-              onClick={(e) => {
-                e.preventDefault();
-                document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
-              }}
-              className="px-6 py-3 bg-primary hover:bg-primary-hover rounded-lg font-medium transition-colors inline-flex items-center gap-2"
-            >
-              <FaArrowDown /> View Projects
-            </a>
-            <button
-              onClick={handleDownload}
-              disabled={downloading}
-              className="px-6 py-3 border border-primary text-primary hover:bg-primary hover:text-text rounded-lg font-medium transition-colors inline-flex items-center justify-center gap-2 min-w-[200px] disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {downloading ? <FaSpinner className="animate-spin" /> : <FaFileDownload />}
-              {downloading ? "Downloading..." : "Download Resume"}
-            </button>
-            <a
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
-              }}
-              className="px-6 py-3 bg-secondary hover:bg-secondary/80 rounded-lg font-medium transition-colors inline-flex items-center gap-2"
-            >
-              <FaEnvelope /> Contact Me
-            </a>
+            <MagneticButton>
+              <a
+                href="#projects"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="px-6 py-3 bg-primary hover:bg-primary-hover hover:shadow-[0_0_20px_rgba(79,110,247,0.4)] rounded-lg font-medium transition-all inline-flex items-center gap-2 active:scale-95"
+              >
+                <FaArrowDown /> View Projects
+              </a>
+            </MagneticButton>
+            <MagneticButton>
+              <button
+                onClick={handleDownload}
+                disabled={downloading}
+                className="px-6 py-3 border border-primary text-primary hover:bg-primary hover:text-text hover:shadow-[0_0_20px_rgba(79,110,247,0.3)] rounded-lg font-medium transition-all inline-flex items-center justify-center gap-2 min-w-[200px] disabled:opacity-50 disabled:cursor-not-allowed active:scale-95"
+              >
+                {downloading ? <FaSpinner className="animate-spin" /> : <FaFileDownload />}
+                {downloading ? "Downloading..." : "Download Resume"}
+              </button>
+            </MagneticButton>
+            <MagneticButton>
+              <a
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="px-6 py-3 bg-secondary hover:bg-secondary/80 hover:shadow-[0_0_20px_rgba(20,184,166,0.4)] rounded-lg font-medium transition-all inline-flex items-center gap-2 active:scale-95"
+              >
+                <FaEnvelope /> Contact Me
+              </a>
+            </MagneticButton>
           </motion.div>
         </motion.div>
 

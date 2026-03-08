@@ -1,6 +1,7 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
+import FeaturedProjects from "./components/FeaturedProjects";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Experience from "./components/Experience";
@@ -14,6 +15,8 @@ function App() {
       <Navbar />
       <Hero />
       <About />
+      <WaveDivider bgClass="bg-bg" fillClass="fill-bg-alt" />
+      <FeaturedProjects />
       <WaveDivider flip bgClass="bg-bg" fillClass="fill-bg-alt" />
       <Skills />
       <WaveDivider bgClass="bg-bg" fillClass="fill-bg-alt" />
