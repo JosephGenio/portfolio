@@ -1,0 +1,7 @@
+{
+  "frontend": ["React", "TypeScript", "HTML", "CSS"],
+  "backend": ["Node.js", "ASP.NET Core", "REST API", "DAML"],
+  "database": ["MS SQL", "MySQL", "PostgreSQL"],
+  "testing": ["Cypress", "Jest"],
+  "devops": ["Docker", "Jenkins", "Git", "GitHub Actions", "Kibana"]
+}

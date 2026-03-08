@@ -1,0 +1,39 @@
+[
+  {
+    "title": "Software Developer",
+    "company": "",
+    "type": "Full Time",
+    "description": [
+      "Developed and maintained web applications using Node.js, React, TypeScript, and MS SQL Server for Inventory Management, Events Management, and Employee Management",
+      "Implemented automated testing with Cypress and Jest for quality assurance",
+      "Managed deployments and provided ongoing client support for new features and updates"
+    ]
+  },
+  {
+    "title": "Software Developer",
+    "company": "",
+    "type": "Part Time",
+    "description": [
+      "Developed trading web applications using DAML and React, including APIs for smart contract integration",
+      "Built car rental booking applications using Magento 2",
+      "Developed WordPress-based websites for clients"
+    ]
+  },
+  {
+    "title": "Software Developer & Technical Support",
+    "company": "",
+    "type": "Full Time",
+    "description": [
+      "Developed a banking web application (Customer Information System, Accounting, Deposits, User Management) using C# ASP.NET Core",
+      "Developed and maintained a laundry service web application using C# ASP.NET Core"
+    ]
+  },
+  {
+    "title": "On the Job Trainee",
+    "company": "",
+    "type": "Intern",
+    "description": [
+      "Developed Web Interface for School Alarm Scheduler System using HTML, CSS, and Vanilla JavaScript"
+    ]
+  }
+]

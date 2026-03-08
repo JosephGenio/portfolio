@@ -1,0 +1,34 @@
+[
+  {
+    "title": "Inventory Management System",
+    "description": "Web-based inventory and event management platform for tracking stock, orders, and product data with real-time updates.",
+    "stack": ["React", "Node.js", "TypeScript", "MS SQL"],
+    "github": "",
+    "demo": "",
+    "image": "/projects/inventory.png"
+  },
+  {
+    "title": "Banking Web Application",
+    "description": "Core banking application featuring Customer Information System, Accounting, Deposits, and User Management modules.",
+    "stack": ["C#", "ASP.NET Core", "MS SQL", "Bootstrap"],
+    "github": "",
+    "demo": "",
+    "image": "/projects/banking.png"
+  },
+  {
+    "title": "Trading Web Application",
+    "description": "Smart contract-based trading platform built with DAML and React for secure, transparent transactions.",
+    "stack": ["DAML", "React", "TypeScript"],
+    "github": "",
+    "demo": "",
+    "image": "/projects/trading.png"
+  },
+  {
+    "title": "Car Rental Booking System",
+    "description": "Full-featured car rental management system with custom booking and fleet management modules.",
+    "stack": ["Magento 2", "WordPress", "PHP", "MySQL"],
+    "github": "",
+    "demo": "",
+    "image": "/projects/carrental.png"
+  }
+]
