@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import projects from "../data/projects.json";
-import { fadeUpVariant, staggerContainer, cardHover } from "../animations/variants";
+import { fadeUpVariant, staggerContainer } from "../animations/variants";
+import ProjectImage from "./ProjectImage";
 
 function Projects() {
   return (
@@ -18,45 +19,55 @@ function Projects() {
         </motion.h2>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          className="flex flex-col gap-10"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
         >
-          {projects.map((project) => (
-            <motion.div
-              key={project.title}
-              variants={fadeUpVariant}
-              initial="rest"
-              whileHover="hover"
-              className="card-gradient card-glow rounded-xl overflow-hidden border border-primary/10 hover:border-primary/30 transition-all"
-            >
-              <motion.div variants={cardHover}>
-                {/* Image placeholder */}
-                <div className="h-48 bg-primary/5 flex items-center justify-center border-b border-primary/10">
-                  <span className="text-text-muted text-sm">{project.title}</span>
+          {projects.map((project, index) => {
+            const isEven = index % 2 === 0;
+
+            return (
+              <motion.div
+                key={project.title}
+                variants={fadeUpVariant}
+                className="group grid grid-cols-1 lg:grid-cols-2 gap-0 card-gradient card-glow rounded-xl overflow-hidden border border-primary/10 hover:border-primary/30 transition-all"
+              >
+                {/* Image side */}
+                <div
+                  className={`relative h-56 lg:h-auto overflow-hidden ${
+                    !isEven ? "lg:order-2" : ""
+                  }`}
+                >
+                  <ProjectImage
+                    src={project.image}
+                    alt={project.title}
+                    className="h-full min-h-56 group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-bg/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
 
-                <div className="p-6 flex flex-col gap-4">
-                  <h3 className="text-xl font-semibold">{project.title}</h3>
-                  <p className="text-text-muted text-sm leading-relaxed">
+                {/* Content side */}
+                <div className={`p-8 flex flex-col justify-center gap-4 ${!isEven ? "lg:order-1" : ""}`}>
+                  <h3 className="text-2xl font-bold group-hover:text-primary transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-text-muted leading-relaxed">
                     {project.description}
                   </p>
 
-                  {/* Tech stack badges */}
                   <div className="flex flex-wrap gap-2">
                     {project.stack.map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-1 text-xs rounded-full bg-secondary/10 text-secondary border border-secondary/20"
+                        className="px-3 py-1 text-xs rounded-full bg-secondary/10 text-secondary border border-secondary/20"
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
 
-                  {/* Links */}
                   <div className="flex items-center gap-4 mt-2">
                     {project.github && (
                       <a
@@ -81,8 +92,8 @@ function Projects() {
                   </div>
                 </div>
               </motion.div>
-            </motion.div>
-          ))}
+            );
+          })}
         </motion.div>
       </div>
     </section>
