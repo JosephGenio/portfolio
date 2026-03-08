@@ -95,7 +95,7 @@ function Contact() {
   ].filter((link) => link.value);
 
   return (
-    <section id="contact" className="py-20 px-6 scroll-mt-20 bg-bg-light/50">
+    <section id="contact" className="py-20 px-6 scroll-mt-20 bg-bg-alt">
       <div className="max-w-6xl mx-auto">
         <motion.h2
           className="text-3xl font-bold text-center mb-12"

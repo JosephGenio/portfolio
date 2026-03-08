@@ -1,7 +1,7 @@
-function WaveDivider({ flip = false, fillClass = "fill-bg" }) {
+function WaveDivider({ flip = false, fillClass = "fill-bg", bgClass = "bg-bg" }) {
   return (
     <div
-      className="w-full leading-[0] overflow-hidden pointer-events-none -mb-px"
+      className={`w-full leading-[0] overflow-hidden pointer-events-none -my-px relative z-[1] ${bgClass}`}
       style={{ transform: flip ? "rotate(180deg)" : undefined }}
     >
       <svg

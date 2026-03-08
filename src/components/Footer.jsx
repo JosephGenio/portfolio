@@ -10,7 +10,7 @@ function Footer() {
   ].filter((link) => link.href);
 
   return (
-    <footer className="py-8 px-6 bg-bg-light/50 border-t border-primary/10">
+    <footer className="py-8 px-6 bg-bg-alt">
       <div className="max-w-6xl mx-auto flex flex-col items-center gap-4">
         {/* Social icons */}
         {socialLinks.length > 0 && (

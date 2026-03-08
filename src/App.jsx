@@ -13,17 +13,16 @@ function App() {
     <div className="bg-bg text-text min-h-screen">
       <Navbar />
       <Hero />
-      <WaveDivider fillClass="fill-bg-light/50" />
+      <WaveDivider bgClass="bg-bg" fillClass="fill-bg-alt" />
       <About />
-      <WaveDivider flip fillClass="fill-bg-light/50" />
+      <WaveDivider flip bgClass="bg-bg" fillClass="fill-bg-alt" />
       <Skills />
-      <WaveDivider fillClass="fill-bg-light/50" />
+      <WaveDivider bgClass="bg-bg" fillClass="fill-bg-alt" />
       <Projects />
-      <WaveDivider flip fillClass="fill-bg-light/50" />
+      <WaveDivider flip bgClass="bg-bg" fillClass="fill-bg-alt" />
       <Experience />
-      <WaveDivider fillClass="fill-bg-light/50" />
+      <WaveDivider bgClass="bg-bg" fillClass="fill-bg-alt" />
       <Contact />
-      <WaveDivider flip fillClass="fill-bg-light/50" />
       <Footer />
     </div>
   );
