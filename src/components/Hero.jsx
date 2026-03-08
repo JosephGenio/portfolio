@@ -162,8 +162,8 @@ function Hero() {
         </motion.div>
       </div>
 
-      {/* Bottom fade — extends below hero to cover the seam with About */}
-      <div className="absolute -bottom-24 left-0 right-0 z-[2] h-48 bg-gradient-to-b from-transparent to-bg-alt pointer-events-none" />
+      {/* Bottom fade — stays within hero bounds */}
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-b from-transparent to-bg-alt pointer-events-none" />
     </section>
   );
 }
