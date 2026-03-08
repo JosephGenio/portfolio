@@ -89,9 +89,9 @@ function Contact() {
   };
 
   const contactLinks = [
-    { icon: FaEnvelope, label: "Email", href: `mailto:${contact.email}`, value: contact.email },
-    { icon: FaGithub, label: "GitHub", href: contact.github, value: contact.github },
-    { icon: FaLinkedin, label: "LinkedIn", href: contact.linkedin, value: contact.linkedin },
+    { icon: FaEnvelope, label: "Email", href: `mailto:${contact.email}`, value: contact.email, color: "text-red-400", bg: "bg-red-400/10", border: "border-red-400/20", hoverBg: "group-hover:bg-red-400/20", hoverBorder: "group-hover:border-red-400/40", glow: "group-hover:shadow-[0_0_20px_rgba(248,113,113,0.2)]" },
+    { icon: FaGithub, label: "GitHub", href: contact.github, value: contact.github, color: "text-white", bg: "bg-white/10", border: "border-white/20", hoverBg: "group-hover:bg-white/20", hoverBorder: "group-hover:border-white/40", glow: "group-hover:shadow-[0_0_20px_rgba(255,255,255,0.15)]" },
+    { icon: FaLinkedin, label: "LinkedIn", href: contact.linkedin, value: contact.linkedin, color: "text-blue-400", bg: "bg-blue-400/10", border: "border-blue-400/20", hoverBg: "group-hover:bg-blue-400/20", hoverBorder: "group-hover:border-blue-400/40", glow: "group-hover:shadow-[0_0_20px_rgba(96,165,250,0.2)]" },
   ].filter((link) => link.value);
 
   return (
@@ -122,7 +122,7 @@ function Contact() {
               below or use the contact form.
             </p>
 
-            <div className="flex flex-col gap-4">
+            <div className="flex items-center gap-5">
               {contactLinks.map((link) => {
                 const Icon = link.icon;
                 return (
@@ -131,10 +131,12 @@ function Contact() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-text-muted hover:text-primary transition-colors"
+                    className="group flex flex-col items-center gap-2"
                   >
-                    <Icon className="text-primary text-xl" />
-                    <span>{link.label}</span>
+                    <div className={`w-14 h-14 rounded-full ${link.bg} border ${link.border} ${link.hoverBg} ${link.hoverBorder} ${link.glow} group-hover:scale-110 flex items-center justify-center transition-all`}>
+                      <Icon className={`${link.color} text-xl`} />
+                    </div>
+                    <span className="text-xs text-text-muted group-hover:text-text transition-colors">{link.label}</span>
                   </a>
                 );
               })}
