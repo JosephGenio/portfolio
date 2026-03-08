@@ -1,8 +1,11 @@
 [
   {
-    "title": "Software Developer",
-    "company": "",
+    "title": "Software Developer and System Support Specialist",
+    "company": "Seansoft Inc.",
     "type": "Full Time",
+    "startDate": "Jan 2023",
+    "endDate": "",
+    "current": true,
     "description": [
       "Developed and maintained web applications using Node.js, React, TypeScript, and MS SQL Server for Inventory Management, Events Management, and Employee Management",
       "Implemented automated testing with Cypress and Jest for quality assurance",
@@ -11,8 +14,11 @@
   },
   {
     "title": "Software Developer",
-    "company": "",
+    "company": "GIBC Wrkflws",
     "type": "Part Time",
+    "startDate": "Jun 2022",
+    "endDate": "Dec 2022",
+    "current": false,
     "description": [
       "Developed trading web applications using DAML and React, including APIs for smart contract integration",
       "Built car rental booking applications using Magento 2",
@@ -21,8 +27,11 @@
   },
   {
     "title": "Software Developer & Technical Support",
-    "company": "",
+    "company": "Aesoft Technology",
     "type": "Full Time",
+    "startDate": "Jan 2021",
+    "endDate": "May 2022",
+    "current": false,
     "description": [
       "Developed a banking web application (Customer Information System, Accounting, Deposits, User Management) using C# ASP.NET Core",
       "Developed and maintained a laundry service web application using C# ASP.NET Core"
@@ -30,8 +39,11 @@
   },
   {
     "title": "On the Job Trainee",
-    "company": "",
+    "company": "Gecko Tech",
     "type": "Intern",
+    "startDate": "Aug 2020",
+    "endDate": "Dec 2020",
+    "current": false,
     "description": [
       "Developed Web Interface for School Alarm Scheduler System using HTML, CSS, and Vanilla JavaScript"
     ]

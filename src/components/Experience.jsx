@@ -35,8 +35,20 @@ function Experience() {
               <div className="absolute -left-[2.55rem] top-1 w-4 h-4 rounded-full bg-primary border-4 border-bg" />
 
               <div className="card-gradient card-glow rounded-xl p-6 border border-primary/10 transition-all">
-                <div className="flex flex-wrap items-center gap-3 mb-3">
+                <div className="flex flex-wrap items-start justify-between gap-3 mb-2">
                   <h3 className="text-lg font-semibold">{entry.title}</h3>
+                  <span className="text-sm text-text-muted whitespace-nowrap">
+                    {entry.startDate}
+                    <span className="text-primary/40"> &ndash; </span>
+                    <span className={entry.current ? "text-secondary font-medium" : ""}>
+                      {entry.current ? "Present" : entry.endDate}
+                    </span>
+                  </span>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-2 text-sm text-text-muted mb-4">
+                  {entry.company && <span>{entry.company}</span>}
+                  {entry.company && <span className="text-primary/30">&middot;</span>}
                   <span
                     className={`px-2 py-0.5 text-xs rounded-full border ${
                       typeBadgeColor[entry.type] || "bg-bg-light text-text-muted border-text-muted/20"
@@ -45,10 +57,6 @@ function Experience() {
                     {entry.type}
                   </span>
                 </div>
-
-                {entry.company && (
-                  <p className="text-text-muted text-sm mb-3">{entry.company}</p>
-                )}
 
                 <ul className="space-y-2">
                   {entry.description.map((item, i) => (
