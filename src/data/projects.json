@@ -5,7 +5,7 @@
     "stack": ["React", "Node.js", "TypeScript", "MS SQL"],
     "github": "",
     "demo": "",
-    "image": "/projects/inventory.png"
+    "image": "/projects/woodwyn-integrated.jpg"
   },
   {
     "title": "Banking Web Application",
@@ -16,12 +16,14 @@
     "image": "/projects/banking.png"
   },
   {
-    "title": "Trading Web Application",
-    "description": "Smart contract-based trading platform built with DAML and React for secure, transparent transactions.",
-    "stack": ["DAML", "React", "TypeScript"],
+    "title": "Fashion Designer Portfolio Website",
+    "description": "A modern portfolio website for a local fashion designer to showcase collections, promote brand identity, and attract potential clients.",
+    "stack": ["WordPress", "Elementor"],
+    "role": "Web Developer",
+    "year": "2023",
     "github": "",
     "demo": "",
-    "image": "/projects/trading.png"
+    "image": "/projects/fashion-designer.png"
   },
   {
     "title": "Car Rental Booking System",

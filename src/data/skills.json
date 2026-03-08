@@ -1,7 +1,7 @@
 {
-  "frontend": ["React", "TypeScript", "HTML", "CSS"],
+  "frontend": ["React", "TypeScript", "HTML", "CSS", "Wordpress", "Elementor"],
   "backend": ["Node.js", "ASP.NET Core", "REST API", "DAML"],
   "database": ["MS SQL", "MySQL", "PostgreSQL"],
   "testing": ["Cypress", "Jest"],
-  "devops": ["Docker", "Jenkins", "Git", "GitHub Actions", "Kibana"]
+  "devops": ["Vercel", "Jenkins", "Git", "GitHub Actions", "Kibana"]
 }
