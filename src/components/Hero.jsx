@@ -127,7 +127,7 @@ function Hero() {
             <button
               onClick={handleDownload}
               disabled={downloading}
-              className="px-6 py-3 border border-primary text-primary hover:bg-primary hover:text-text rounded-lg font-medium transition-colors inline-flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-6 py-3 border border-primary text-primary hover:bg-primary hover:text-text rounded-lg font-medium transition-colors inline-flex items-center justify-center gap-2 min-w-[200px] disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {downloading ? <FaSpinner className="animate-spin" /> : <FaFileDownload />}
               {downloading ? "Downloading..." : "Download Resume"}
