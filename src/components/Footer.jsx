@@ -34,11 +34,7 @@ function Footer() {
         )}
 
         <p className="text-text-muted text-sm">
-          Built with React & TailwindCSS
-        </p>
-
-        <p className="text-text-muted text-sm">
-          &copy; {new Date().getFullYear()} {siteData.name}. All rights reserved.
+          &copy; {new Date().getFullYear()} {siteData.motherDomain} | All rights reserved.
         </p>
       </div>
     </footer>

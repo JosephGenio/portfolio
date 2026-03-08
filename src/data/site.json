@@ -1,6 +1,7 @@
 {
-  "name": "Joseph Genio",
+  "name": "Portfolio",
   "title": "Full Stack Software Developer",
   "tagline": "Building scalable web applications with React, NodeJS, and ASP.NET Core",
-  "resume": "/resume.pdf"
+  "resume": "/resume.pdf",
+  "motherDomain": "Synflo"
 }

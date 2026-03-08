@@ -1,21 +1,92 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
+import emailjs from "@emailjs/browser";
 import contact from "../data/contact.json";
 import { fadeLeftVariant, fadeRightVariant } from "../animations/variants";
+import { isValidEmail } from "../utilities/helpers";
+import ErrorMessage from "./ErrorMessage";
+
+
+  const {
+    VITE_EMAILJS_SERVICE_ID,
+    VITE_EMAILJS_TEMPLATE_ID, 
+    VITE_EMAILJS_PUBLIC_KEY,
+    EMAIL_SEND_RATE_LIMIT } = import.meta.env;
+
+const EMAILJS_SERVICE_ID = VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = VITE_EMAILJS_PUBLIC_KEY;
+
+const RATE_LIMIT_MS = EMAIL_SEND_RATE_LIMIT
 
 function Contact() {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const formRef = useRef();
+  const [status, setStatus] = useState("idle"); // idle | sending | success | error | rate_limited
+  const [lastSentAt, setLastSentAt] = useState(0);
+  const [formErrors, setFormErrors] = useState({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setFormData({ name: "", email: "", message: "" });
+    const errors = {};
+
+    const name = formRef.current.elements.from_name?.value.trim();
+    const email = formRef.current.elements.from_email?.value.trim();
+    const message = formRef.current.elements.message?.value.trim();
+
+    if (!name) errors.name = "Please enter your name.";
+    if (!email) errors.email = "Please enter your email.";
+    else if (!isValidEmail(email)) errors.email = "Please enter a valid email address.";
+    if (!message) errors.message = "Please enter a message.";
+
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      return;
+    }
+
+    setFormErrors({});
+
+    // Honeypot check — if the hidden field has a value, it's a bot
+    const honeypot = formRef.current.elements._gotcha?.value;
+    if (honeypot) {
+      // Silently pretend success so the bot doesn't retry
+      setStatus("success");
+      return;
+    }
+
+    // Rate limiter — prevent rapid-fire submissions
+    const now = Date.now();
+    if (now - lastSentAt < RATE_LIMIT_MS) {
+      const secondsLeft = Math.ceil((RATE_LIMIT_MS - (now - lastSentAt)) / 1000);
+      setStatus("rate_limited");
+      setTimeout(() => {
+        if (status === "rate_limited") setStatus("idle");
+      }, secondsLeft * 1000);
+      return;
+    }
+
+    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+      console.warn("EmailJS environment variables not configured.");
+      setStatus("error");
+      return;
+    }
+
+    setStatus("sending");
+
+    emailjs
+      .sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, formRef.current, {
+        publicKey: EMAILJS_PUBLIC_KEY,
+      })
+      .then(() => {
+        setStatus("success");
+        setLastSentAt(Date.now());
+        formRef.current.reset();
+      })
+      .catch((err) => {
+        console.error("EmailJS error:", err);
+        setStatus("error");
+      });
   };
 
   const contactLinks = [
@@ -78,46 +149,60 @@ function Contact() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
           >
-            {submitted ? (
+            {status === "success" ? (
               <div className="bg-secondary/10 border border-secondary/30 rounded-xl p-8 text-center">
                 <p className="text-secondary text-lg font-medium">
                   Thanks for reaching out! I&apos;ll get back to you soon.
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+              <form ref={formRef} onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
                 <input
                   type="text"
-                  name="name"
+                  name="from_name"
                   placeholder="Your Name"
-                  required
-                  value={formData.name}
-                  onChange={handleChange}
                   className="w-full px-4 py-3 bg-bg-light border border-primary/10 rounded-lg text-text placeholder:text-text-muted focus:outline-none focus:border-primary transition-colors"
                 />
+                <ErrorMessage message={formErrors.name} />
                 <input
-                  type="email"
-                  name="email"
+                  type="text"
+                  name="from_email"
                   placeholder="Your Email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
                   className="w-full px-4 py-3 bg-bg-light border border-primary/10 rounded-lg text-text placeholder:text-text-muted focus:outline-none focus:border-primary transition-colors"
                 />
+                <ErrorMessage message={formErrors.email} />
                 <textarea
                   name="message"
                   placeholder="Your Message"
-                  required
                   rows={5}
-                  value={formData.message}
-                  onChange={handleChange}
                   className="w-full px-4 py-3 bg-bg-light border border-primary/10 rounded-lg text-text placeholder:text-text-muted focus:outline-none focus:border-primary transition-colors resize-none"
                 />
+                <ErrorMessage message={formErrors.message} />
+
+                {/* Honeypot — hidden from real users, bots will fill it */}
+                <input
+                  type="text"
+                  name="_gotcha"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  className="absolute opacity-0 h-0 w-0 overflow-hidden pointer-events-none"
+                />
+
+                <ErrorMessage
+                  message={status === "error" ? "Something went wrong. Please try again or email me directly." : null}
+                />
+                <ErrorMessage
+                  message={status === "rate_limited" ? "Please wait a moment before sending another message." : null}
+                  variant="warning"
+                />
+
                 <button
                   type="submit"
-                  className="px-6 py-3 bg-primary hover:bg-primary-hover rounded-lg font-medium transition-colors cursor-pointer"
+                  disabled={status === "sending"}
+                  className="px-6 py-3 bg-primary hover:bg-primary-hover rounded-lg font-medium transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send Message
+                  {status === "sending" ? "Sending..." : "Send Message"}
                 </button>
               </form>
             )}
