@@ -53,11 +53,11 @@ export default function handler(req, res) {
   }
 
   try {
-    const filePath = join(process.cwd(), "api", "resume.pdf");
+    const filePath = join(process.cwd(), "api", "active_resume.pdf");
     const fileBuffer = readFileSync(filePath);
 
     res.setHeader("Content-Type", "application/pdf");
-    res.setHeader("Content-Disposition", 'attachment; filename="resume.pdf"');
+    res.setHeader("Content-Disposition", 'attachment; filename="active_resume.pdf"');
     res.setHeader("X-Robots-Tag", "noindex, nofollow");
     res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
 
