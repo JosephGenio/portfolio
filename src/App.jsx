@@ -13,7 +13,6 @@ function App() {
     <div className="bg-bg text-text min-h-screen">
       <Navbar />
       <Hero />
-      <WaveDivider bgClass="bg-bg" fillClass="fill-bg-alt" />
       <About />
       <WaveDivider flip bgClass="bg-bg" fillClass="fill-bg-alt" />
       <Skills />

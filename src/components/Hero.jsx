@@ -44,7 +44,7 @@ function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center scroll-mt-20 px-6 overflow-hidden"
+      className="relative min-h-screen flex items-center scroll-mt-20 px-6"
     >
       {/* Animated gradient glow */}
       <div className="hero-glow" />
@@ -161,6 +161,9 @@ function Hero() {
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Bottom fade — extends below hero to cover the seam with About */}
+      <div className="absolute -bottom-24 left-0 right-0 z-[2] h-48 bg-gradient-to-b from-transparent to-bg-alt pointer-events-none" />
     </section>
   );
 }
