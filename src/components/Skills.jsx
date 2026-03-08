@@ -21,6 +21,9 @@ import {
   SiCypress,
   SiJest,
   SiKibana,
+  SiWordpress,
+  SiElementor,
+  SiVercel,
 } from "react-icons/si";
 import { TbApi } from "react-icons/tb";
 import skills from "../data/skills.json";
@@ -48,11 +51,13 @@ const skillIcons = {
   PostgreSQL: { icon: SiPostgresql, color: "#4169E1" },
   Cypress: { icon: SiCypress, color: "#69D3A7" },
   Jest: { icon: SiJest, color: "#C21325" },
-  Docker: { icon: FaDocker, color: "#2496ED" },
+  Vercel: { icon: SiVercel, color: "#ffffff" },
   Jenkins: { icon: FaJenkins, color: "#D24939" },
   Git: { icon: FaGitAlt, color: "#F05032" },
   "GitHub Actions": { icon: FaGithub, color: "#FFFFFF" },
   Kibana: { icon: SiKibana, color: "#005571" },
+  Wordpress: { icon: SiWordpress, color: "#0080ff" },
+  Elementor: { icon: SiElementor, color: "#c00b0b" }
 };
 
 function Skills() {
