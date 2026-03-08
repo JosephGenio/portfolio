@@ -5,6 +5,16 @@ import { FaArrowDown, FaFileDownload, FaEnvelope, FaSpinner } from "react-icons/
 import siteData from "../data/site.json";
 import { fadeUpVariant, staggerContainer, fadeRightVariant } from "../animations/variants";
 
+const particles = Array.from({ length: 12 }, (_, i) => ({
+  id: i,
+  size: 2 + (i % 5) * 1.2,
+  left: `${5 + ((i * 37) % 90)}%`,
+  top: `${10 + ((i * 53) % 80)}%`,
+  duration: 12 + (i % 5) * 3,
+  delay: (i % 4) * 1.5,
+  color: i % 3 === 0 ? "var(--color-secondary)" : "var(--color-primary)",
+}));
+
 function Hero() {
   const [downloading, setDownloading] = useState(false);
 
@@ -36,8 +46,36 @@ function Hero() {
       id="hero"
       className="relative min-h-screen flex items-center scroll-mt-20 px-6 overflow-hidden"
     >
-      {/* Radial glow behind hero */}
+      {/* Animated gradient glow */}
       <div className="hero-glow" />
+
+      {/* Floating particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-[1]">
+        {particles.map((p) => (
+          <motion.div
+            key={p.id}
+            className="absolute rounded-full"
+            style={{
+              width: p.size,
+              height: p.size,
+              left: p.left,
+              top: p.top,
+              backgroundColor: p.color,
+              boxShadow: `0 0 ${p.size * 3}px ${p.color}`,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              opacity: [0.3, 0.8, 0.3],
+            }}
+            transition={{
+              duration: p.duration,
+              repeat: Infinity,
+              delay: p.delay,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
+      </div>
 
       <div className="relative z-10 max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Left column */}
