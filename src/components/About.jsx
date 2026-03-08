@@ -3,7 +3,7 @@ import { fadeLeftVariant, fadeRightVariant } from "../animations/variants";
 
 function About() {
   return (
-    <section id="about" className="py-20 px-6 scroll-mt-20">
+    <section id="about" className="py-20 px-6 scroll-mt-20 bg-bg-light/50">
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Left — image placeholder */}
         <motion.div

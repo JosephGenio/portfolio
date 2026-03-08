@@ -5,7 +5,7 @@ import { fadeUpVariant, staggerContainer, cardHover } from "../animations/varian
 
 function Projects() {
   return (
-    <section id="projects" className="py-20 px-6 scroll-mt-20 section-glow">
+    <section id="projects" className="py-20 px-6 scroll-mt-20 bg-bg-light/50 section-glow">
       <div className="max-w-6xl mx-auto">
         <motion.h2
           className="text-3xl font-bold text-center mb-12"
