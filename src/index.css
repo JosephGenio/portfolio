@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #0a0a0a;
-  --color-bg-light: #171717;
-  --color-bg-alt: #111111;
-  --color-surface: #1f1f1f;
+  --color-bg: #060611;
+  --color-bg-light: #0d0d1a;
+  --color-bg-alt: #0a0a16;
+  --color-surface: #12122a;
 
-  --color-primary: #6366f1;
-  --color-primary-hover: #4f46e5;
+  --color-primary: #4f6ef7;
+  --color-primary-hover: #3b5ae0;
 
   --color-secondary: #14b8a6;
   --color-secondary-hover: #0d9488;
@@ -15,20 +15,20 @@
   --color-accent: #f59e0b;
   --color-accent-hover: #d97706;
 
-  --color-text: #fafafa;
-  --color-text-muted: #a1a1aa;
+  --color-text: #f0f0f8;
+  --color-text-muted: #8888a8;
 
-  --color-border: #2a2a2a;
-  --color-card: #171717;
+  --color-border: #1a1a35;
+  --color-card: #0d0d1a;
 
-  /* Card gradient stops (slate → primary-tinted → slate) */
-  --color-card-from: #0a0a14;
-  --color-card-via: #1a1a3e;
-  --color-card-to: #0a0a14;
+  /* Card gradient stops (navy → blue-tinted → navy) */
+  --color-card-from: #06060f;
+  --color-card-via: #141435;
+  --color-card-to: #06060f;
 
   /* Glow / radial accent */
-  --color-glow: #6366f120;
-  --color-glow-strong: #6366f140;
+  --color-glow: #4f6ef720;
+  --color-glow-strong: #4f6ef740;
 }
 
 html {
@@ -47,19 +47,19 @@ body {
   width: 100%;
   height: 100%;
   background: radial-gradient(
-    ellipse at 30% 20%,
-    oklch(from var(--color-primary) l c h / 0.15) 0%,
-    transparent 50%
-  ),
-  radial-gradient(
-    ellipse at 70% 60%,
-    oklch(from var(--color-secondary) l c h / 0.1) 0%,
-    transparent 50%
-  ),
-  radial-gradient(
-    ellipse at 50% 40%,
-    var(--color-glow-strong) 0%,
+    ellipse at 50% 0%,
+    #1a3a8a55 0%,
     transparent 60%
+  ),
+  radial-gradient(
+    ellipse at 30% 30%,
+    #4f6ef725 0%,
+    transparent 50%
+  ),
+  radial-gradient(
+    ellipse at 70% 50%,
+    #14b8a610 0%,
+    transparent 50%
   );
   background-size: 200% 200%;
   animation: hero-gradient-shift 15s ease-in-out infinite;
