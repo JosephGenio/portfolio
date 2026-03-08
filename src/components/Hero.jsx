@@ -1,10 +1,36 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
-import { FaArrowDown, FaFileDownload, FaEnvelope } from "react-icons/fa";
+import { FaArrowDown, FaFileDownload, FaEnvelope, FaSpinner } from "react-icons/fa";
 import siteData from "../data/site.json";
 import { fadeUpVariant, staggerContainer, fadeRightVariant } from "../animations/variants";
 
 function Hero() {
+  const [downloading, setDownloading] = useState(false);
+
+  async function handleDownload() {
+    if (downloading) return;
+    setDownloading(true);
+    try {
+      const token = btoa(Date.now().toString());
+      const response = await fetch(`/api/resume?token=${token}`);
+      if (!response.ok) throw new Error("Download failed");
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "resume.pdf";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    } catch {
+      alert("Unable to download resume. Please try again.");
+    } finally {
+      setDownloading(false);
+    }
+  }
+
   return (
     <section
       id="hero"
@@ -60,13 +86,14 @@ function Hero() {
             >
               <FaArrowDown /> View Projects
             </a>
-            <a
-              href={siteData.resume}
-              download
-              className="px-6 py-3 border border-primary text-primary hover:bg-primary hover:text-text rounded-lg font-medium transition-colors inline-flex items-center gap-2"
+            <button
+              onClick={handleDownload}
+              disabled={downloading}
+              className="px-6 py-3 border border-primary text-primary hover:bg-primary hover:text-text rounded-lg font-medium transition-colors inline-flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <FaFileDownload /> Download Resume
-            </a>
+              {downloading ? <FaSpinner className="animate-spin" /> : <FaFileDownload />}
+              {downloading ? "Downloading..." : "Download Resume"}
+            </button>
             <a
               href="#contact"
               onClick={(e) => {
