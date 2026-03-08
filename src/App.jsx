@@ -7,11 +7,13 @@ import Experience from "./components/Experience";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import WaveDivider from "./components/WaveDivider";
+import BackToTop from "./components/BackToTop";
 
 function App() {
   return (
     <div className="bg-bg text-text min-h-screen">
       <Navbar />
+      <BackToTop />
       <Hero />
       <About />
       <WaveDivider flip bgClass="bg-bg" fillClass="fill-bg-alt" />
