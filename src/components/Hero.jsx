@@ -1,14 +1,14 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
-import { FaArrowDown, FaFileDownload, FaEnvelope, FaSpinner } from "react-icons/fa";
+import { FaArrowDown, FaEnvelope, FaReact, FaNodeJs, FaDocker } from "react-icons/fa";
+import { SiDotnet, SiTypescript } from "react-icons/si";
 import siteData from "../data/site.json";
-import { fadeUpVariant, staggerContainer, fadeRightVariant } from "../animations/variants";
+import { fadeUpVariant, staggerContainer, scaleUpVariant } from "../animations/variants";
 import MagneticButton from "./MagneticButton";
 
-const particles = Array.from({ length: 12 }, (_, i) => ({
+const particles = Array.from({ length: 8 }, (_, i) => ({
   id: i,
-  size: 2 + (i % 5) * 1.2,
+  size: 3 + (i % 4) * 1.5,
   left: `${5 + ((i * 37) % 90)}%`,
   top: `${10 + ((i * 53) % 80)}%`,
   duration: 12 + (i % 5) * 3,
@@ -16,32 +16,15 @@ const particles = Array.from({ length: 12 }, (_, i) => ({
   color: i % 3 === 0 ? "var(--color-secondary)" : "var(--color-primary)",
 }));
 
+const orbitIcons = [
+  { Icon: FaReact, color: "#61DAFB", duration: 20, startAngle: 0 },
+  { Icon: FaNodeJs, color: "#539E43", duration: 25, startAngle: 72 },
+  { Icon: SiDotnet, color: "#512BD4", duration: 30, startAngle: 144 },
+  { Icon: SiTypescript, color: "#3178C6", duration: 22, startAngle: 216 },
+  { Icon: FaDocker, color: "#2496ED", duration: 28, startAngle: 288 },
+];
+
 function Hero() {
-  const [downloading, setDownloading] = useState(false);
-
-  async function handleDownload() {
-    if (downloading) return;
-    setDownloading(true);
-    try {
-      const token = btoa(Date.now().toString());
-      const response = await fetch(`/api/resume?token=${token}`);
-      if (!response.ok) throw new Error("Download failed");
-      const blob = await response.blob();
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "resume.pdf";
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
-    } catch {
-      alert("Unable to download resume. Please try again.");
-    } finally {
-      setDownloading(false);
-    }
-  }
-
   return (
     <section
       id="hero"
@@ -78,23 +61,35 @@ function Hero() {
         ))}
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        {/* Left column */}
+      <div className="relative z-10 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        {/* Left column — content */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
           className="flex flex-col gap-6"
         >
-          <motion.p variants={fadeUpVariant} className="text-secondary text-lg font-medium">
-            Hi, I&apos;m
-          </motion.p>
+          {/* Status badge */}
+          <motion.div variants={fadeUpVariant} className="flex items-center gap-2 w-fit">
+            <span className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
+            <span className="text-sm text-text-muted tracking-wide uppercase">
+              Available for opportunities
+            </span>
+          </motion.div>
 
-          <motion.h1 variants={fadeUpVariant} className="text-5xl md:text-6xl font-bold text-text">
+          {/* Name with gradient */}
+          <motion.h1
+            variants={fadeUpVariant}
+            className="text-5xl md:text-7xl font-extrabold bg-gradient-to-r from-text via-primary to-secondary bg-clip-text text-transparent"
+          >
             {siteData.name}
           </motion.h1>
 
-          <motion.div variants={fadeUpVariant} className="text-2xl md:text-3xl font-semibold text-primary h-10">
+          {/* Typing animation */}
+          <motion.div
+            variants={fadeUpVariant}
+            className="text-2xl md:text-3xl font-semibold text-primary h-10"
+          >
             <TypeAnimation
               sequence={[
                 "Software Developer",
@@ -110,10 +105,15 @@ function Hero() {
             />
           </motion.div>
 
-          <motion.p variants={fadeUpVariant} className="text-text-muted text-lg max-w-lg">
+          {/* Tagline */}
+          <motion.p
+            variants={fadeUpVariant}
+            className="text-text-muted text-lg max-w-lg"
+          >
             {siteData.tagline}
           </motion.p>
 
+          {/* CTA buttons */}
           <motion.div variants={fadeUpVariant} className="flex flex-wrap gap-4 mt-2">
             <MagneticButton>
               <a
@@ -128,48 +128,110 @@ function Hero() {
               </a>
             </MagneticButton>
             <MagneticButton>
-              <button
-                onClick={handleDownload}
-                disabled={downloading}
-                className="px-6 py-3 border border-primary text-primary hover:bg-primary hover:text-text hover:shadow-[0_0_20px_rgba(79,110,247,0.3)] rounded-lg font-medium transition-all inline-flex items-center justify-center gap-2 min-w-[200px] disabled:opacity-50 disabled:cursor-not-allowed active:scale-95"
-              >
-                {downloading ? <FaSpinner className="animate-spin" /> : <FaFileDownload />}
-                {downloading ? "Downloading..." : "Download Resume"}
-              </button>
-            </MagneticButton>
-            <MagneticButton>
               <a
                 href="#contact"
                 onClick={(e) => {
                   e.preventDefault();
                   document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="px-6 py-3 bg-secondary hover:bg-secondary/80 hover:shadow-[0_0_20px_rgba(20,184,166,0.4)] rounded-lg font-medium transition-all inline-flex items-center gap-2 active:scale-95"
+                className="px-6 py-3 border border-secondary text-secondary hover:bg-secondary hover:text-text hover:shadow-[0_0_20px_rgba(20,184,166,0.4)] rounded-lg font-medium transition-all inline-flex items-center gap-2 active:scale-95"
               >
-                <FaEnvelope /> Contact Me
+                <FaEnvelope /> Get in Touch
               </a>
             </MagneticButton>
           </motion.div>
         </motion.div>
 
-        {/* Right column — illustration placeholder */}
+        {/* Right column — orbiting tech icons */}
         <motion.div
-          variants={fadeRightVariant}
+          variants={scaleUpVariant}
           initial="hidden"
           animate="visible"
+          transition={{ delay: 0.4 }}
           className="hidden lg:flex items-center justify-center"
         >
-          <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            className="w-80 h-80 rounded-full bg-primary/10 border-2 border-primary/30 flex items-center justify-center"
-          >
-            <span className="text-6xl text-primary/60">{"</>"}</span>
-          </motion.div>
+          <div className="relative w-80 h-80">
+            {/* Central "JG" element */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+              {/* Pulsing glow ring */}
+              <motion.div
+                className="absolute -inset-4 rounded-full bg-primary/20"
+                animate={{
+                  scale: [1, 1.3, 1],
+                  opacity: [0.3, 0.05, 0.3],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+              {/* Second glow ring */}
+              <motion.div
+                className="absolute -inset-8 rounded-full bg-secondary/10"
+                animate={{
+                  scale: [1, 1.2, 1],
+                  opacity: [0.2, 0.05, 0.2],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.5,
+                }}
+              />
+              {/* Initials circle */}
+              <div className="w-20 h-20 rounded-full bg-surface border border-primary/30 flex items-center justify-center">
+                <span className="text-2xl font-bold text-primary">JG</span>
+              </div>
+            </div>
+
+            {/* Orbiting icons */}
+            {orbitIcons.map(({ Icon, color, duration, startAngle }) => (
+              <motion.div
+                key={startAngle}
+                className="absolute top-1/2 left-1/2 w-0 h-0"
+                animate={{ rotate: [startAngle, startAngle + 360] }}
+                transition={{
+                  duration,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+              >
+                <div style={{ transform: "translateX(130px) translateY(-50%)" }}>
+                  <motion.div
+                    animate={{ rotate: [-startAngle, -startAngle - 360] }}
+                    transition={{
+                      duration,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                    className="flex items-center justify-center w-10 h-10 rounded-full bg-surface/80 border border-border"
+                    style={{
+                      boxShadow: `0 0 12px ${color}40, 0 0 4px ${color}20`,
+                    }}
+                  >
+                    <Icon
+                      className="text-lg"
+                      style={{
+                        color,
+                        filter: `drop-shadow(0 0 6px ${color}80)`,
+                      }}
+                    />
+                  </motion.div>
+                </div>
+              </motion.div>
+            ))}
+
+            {/* Orbit ring path (visual guide) */}
+            <div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[260px] h-[260px] rounded-full border border-primary/10"
+            />
+          </div>
         </motion.div>
       </div>
 
-      {/* Bottom fade — stays within hero bounds */}
+      {/* Bottom fade */}
       <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-b from-transparent to-bg-alt pointer-events-none" />
     </section>
   );
