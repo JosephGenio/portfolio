@@ -39,9 +39,9 @@ function Navbar() {
         <a
           href="#hero"
           onClick={(e) => handleNavClick(e, "#hero")}
-          className="text-xl font-bold text-primary"
+          className="flex items-center gap-2"
         >
-          {siteData.name}
+          <img src="/site-logo.png" alt={siteData.name} className="h-8 w-auto" />
         </a>
 
         {/* Desktop links */}
