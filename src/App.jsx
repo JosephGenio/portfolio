@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -12,6 +13,7 @@ import BackToTop from "./components/BackToTop";
 function App() {
   return (
     <div className="bg-bg text-text min-h-screen">
+      <Analytics />
       <Navbar />
       <BackToTop />
       <Hero />
