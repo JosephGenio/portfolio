@@ -6,7 +6,7 @@ import ProjectImage from "./ProjectImage";
 
 function Projects() {
   return (
-    <section id="projects" className="py-20 px-6 scroll-mt-20 bg-bg-alt section-glow">
+    <section id="projects" className="py-20 px-6 scroll-mt-20 bg-bg">
       <div className="max-w-6xl mx-auto">
         <motion.h2
           className="text-3xl font-bold text-center mb-12"
@@ -15,7 +15,7 @@ function Projects() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          Projects
+          Professional Work
         </motion.h2>
 
         <motion.div

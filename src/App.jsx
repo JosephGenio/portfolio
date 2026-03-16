@@ -22,9 +22,9 @@ function App() {
       <WaveDivider flip bgClass="bg-bg" fillClass="fill-bg-alt" />
       <Skills />
       <WaveDivider bgClass="bg-bg" fillClass="fill-bg-alt" />
-      <Projects />
-      <WaveDivider flip bgClass="bg-bg" fillClass="fill-bg-alt" />
       <SideProjects />
+      <WaveDivider flip bgClass="bg-bg" fillClass="fill-bg-alt" />
+      <Projects />
       <WaveDivider bgClass="bg-bg" fillClass="fill-bg-alt" />
       <Experience />
       <WaveDivider bgClass="bg-bg" fillClass="fill-bg-alt" />

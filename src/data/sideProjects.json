@@ -3,6 +3,7 @@
     "title": "SynFlo",
     "description": "A developer toolkit designed to streamline and synchronize development workflows.",
     "url": "https://synflo.space",
+    "image": "/side-prjects/synflo-hero.png",
     "stack": ["React", "Node.js"]
   }
 ]

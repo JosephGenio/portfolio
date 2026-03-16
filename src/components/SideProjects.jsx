@@ -1,15 +1,15 @@
 import { motion } from "framer-motion";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import sideProjects from "../data/sideProjects.json";
+import ProjectImage from "./ProjectImage";
 import {
   fadeUpVariant,
   staggerContainer,
-  cardHover,
 } from "../animations/variants";
 
 function SideProjects() {
   return (
-    <section id="side-projects" className="py-20 px-6 scroll-mt-20 bg-bg">
+    <section id="side-projects" className="py-20 px-6 scroll-mt-20 bg-bg-alt section-glow">
       <div className="max-w-6xl mx-auto">
         <motion.h2
           className="text-3xl font-bold text-center mb-4"
@@ -32,7 +32,7 @@ function SideProjects() {
         </motion.p>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="flex flex-col gap-10"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
@@ -45,24 +45,32 @@ function SideProjects() {
               target="_blank"
               rel="noopener noreferrer"
               variants={fadeUpVariant}
-              initial="rest"
-              whileHover="hover"
-              animate="rest"
-              className="group card-gradient card-glow rounded-xl border border-primary/10 hover:border-primary/30 transition-all p-6 flex flex-col gap-4 cursor-pointer"
+              className="group card-gradient card-glow rounded-xl overflow-hidden border border-primary/10 hover:border-primary/30 transition-all cursor-pointer block"
             >
-              <motion.div variants={cardHover} className="flex flex-col gap-4 h-full">
+              {/* Screenshot */}
+              <div className="relative h-64 sm:h-80 lg:h-96 overflow-hidden">
+                <ProjectImage
+                  src={project.image}
+                  alt={project.title}
+                  className="h-full group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-bg/80 via-bg/20 to-transparent" />
+              </div>
+
+              {/* Content */}
+              <div className="p-6 sm:p-8 flex flex-col gap-4">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-xl font-bold group-hover:text-primary transition-colors">
+                  <h3 className="text-2xl font-bold group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
                   <FaExternalLinkAlt className="text-text-muted group-hover:text-primary transition-colors text-sm shrink-0" />
                 </div>
 
-                <p className="text-text-muted text-sm leading-relaxed flex-1">
+                <p className="text-text-muted leading-relaxed max-w-2xl">
                   {project.description}
                 </p>
 
-                <div className="flex flex-wrap gap-2 mt-auto">
+                <div className="flex flex-wrap gap-2">
                   {project.stack.map((tech) => (
                     <span
                       key={tech}
@@ -72,7 +80,7 @@ function SideProjects() {
                     </span>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             </motion.a>
           ))}
         </motion.div>
