@@ -4,6 +4,7 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
+import SideProjects from "./components/SideProjects";
 import Experience from "./components/Experience";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
@@ -23,6 +24,8 @@ function App() {
       <WaveDivider bgClass="bg-bg" fillClass="fill-bg-alt" />
       <Projects />
       <WaveDivider flip bgClass="bg-bg" fillClass="fill-bg-alt" />
+      <SideProjects />
+      <WaveDivider bgClass="bg-bg" fillClass="fill-bg-alt" />
       <Experience />
       <WaveDivider bgClass="bg-bg" fillClass="fill-bg-alt" />
       <Contact />

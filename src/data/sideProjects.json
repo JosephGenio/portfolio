@@ -1,0 +1,8 @@
+[
+  {
+    "title": "SynFlo",
+    "description": "A developer toolkit designed to streamline and synchronize development workflows.",
+    "url": "https://synflo.space",
+    "stack": ["React", "Node.js"]
+  }
+]
