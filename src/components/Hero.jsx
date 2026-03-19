@@ -117,10 +117,10 @@ function Hero() {
           <motion.div variants={fadeUpVariant} className="flex flex-wrap gap-4 mt-2">
             <MagneticButton>
               <a
-                href="#projects"
+                href="#side-projects"
                 onClick={(e) => {
                   e.preventDefault();
-                  document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
+                  document.querySelector("#side-projects")?.scrollIntoView({ behavior: "smooth" });
                 }}
                 className="px-6 py-3 bg-primary hover:bg-primary-hover hover:shadow-[0_0_20px_rgba(79,110,247,0.4)] rounded-lg font-medium transition-all inline-flex items-center gap-2 active:scale-95"
               >
